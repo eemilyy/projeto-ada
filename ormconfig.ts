@@ -1,4 +1,6 @@
 import { DataSource } from "typeorm";
+import { User } from "./src/database/entities/User.entity";
+import { Project } from "./src/database/entities/Project.entity";
 
 
 export const AppDataSource = new DataSource({
@@ -9,7 +11,7 @@ export const AppDataSource = new DataSource({
     password: 'postgres',
     database: 'projeto-ada',
     synchronize: false,
-    //entities: [User], 
+    entities: [User, Project], 
     migrations: [
         __dirname + "/src/database/migrations/*.ts"
     ]
