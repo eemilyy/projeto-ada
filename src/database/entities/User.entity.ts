@@ -20,7 +20,7 @@ export class User {
     user_type: string;
 
     @Column()
-    image_URL: string;
+    imageURL: string;
 
     @Column()
     active: boolean;
