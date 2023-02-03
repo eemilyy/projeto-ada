@@ -28,3 +28,10 @@ export const destroy = async (name: string) => {
         await repository.delete(name);
     }
 }
+
+export const addStudent = async (projetc_id:string, student_id:string) => {
+    return await repository.save(
+        {id: projetc_id,
+        students_id: student_id }
+    );
+}

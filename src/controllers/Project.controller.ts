@@ -3,7 +3,7 @@ import * as projectRepository from '../database/repositories/Project.repository'
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        if (!!(await projectRepository.getByName(req.body.title))) throw new Error("Project already exists");
+        if (!!(await projectRepository.getByName(req.body.name))) throw new Error("Project already exists");
         else {
             const project = await projectRepository.create({
                 ...req.body
@@ -39,6 +39,19 @@ export const destroy = async (req:Request, res: Response, next: NextFunction) =>
             res.status(200).send({ message: "project successfully destroyed"});
         }
      
+    } catch (error: any) {
+        res.status(400).send({ message: 'The request has failed: ' + error });
+    }
+}
+
+export const addStudent = async (req:Request, res: Response, next: NextFunction) => { //verificar porque não está indo
+    try {
+        if (!!!(await projectRepository.getById(req.params.id))) throw new Error("Project does not exist");
+        else {
+            const project = await projectRepository.addStudent(req.params.id, req.body.students_id);
+            res.status(201).send(project);
+        }
+        
     } catch (error: any) {
         res.status(400).send({ message: 'The request has failed: ' + error });
     }
