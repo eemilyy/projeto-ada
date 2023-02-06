@@ -9,6 +9,8 @@ export const create = async (data: any) => {
     user.name = data.name;
     user.email = data.email;
     user.password = data.password;
+    user.phone_number = data.phone_number;
+    user.cpf_cnpj = data.cpf_cnpj;
     user.user_type = data.user_type;
     user.imageURL = data.imageURL;
 
