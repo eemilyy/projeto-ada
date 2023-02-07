@@ -63,6 +63,3 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
         res.status(400).send({ message: 'The request has failed: ' + error });
     }
 }
-
-
-

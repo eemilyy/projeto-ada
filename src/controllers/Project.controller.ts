@@ -44,15 +44,24 @@ export const destroy = async (req:Request, res: Response, next: NextFunction) =>
     }
 }
 
-export const addStudent = async (req:Request, res: Response, next: NextFunction) => { //verificar porque não está indo
-    try {
-        if (!!!(await projectRepository.getById(req.params.id))) throw new Error("Project does not exist");
-        else {
-            const project = await projectRepository.addStudent(req.params.id, req.body.students_id);
-            res.status(201).send(project);
-        }
+// export const addStudent = async (req:Request, res: Response, next: NextFunction) => { //verificar porque não está indo
+//     try {
+//         if (!!!(await projectRepository.getById(req.params.id))) throw new Error("Project does not exist");
+//         else {
+//             const project = await projectRepository.addStudent(req.params.id, req.body.students_id);
+//             res.status(201).send(project);
+//         }
         
+//     } catch (error: any) {
+//         res.status(400).send({ message: 'The request has failed: ' + error });
+//     }
+// }
+
+export const index = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        const allProjects = await projectRepository.getAll();
+        res.status(200).send(allProjects);
     } catch (error: any) {
         res.status(400).send({ message: 'The request has failed: ' + error });
-    }
+    } 
 }

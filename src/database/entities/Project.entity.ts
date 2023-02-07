@@ -15,6 +15,9 @@ export class Project {
     description: string;
 
     @Column()
+    phone_number: string;
+
+    @Column()
     user_id: string;
 
     @ManyToOne(() => User)

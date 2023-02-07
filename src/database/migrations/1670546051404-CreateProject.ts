@@ -21,6 +21,10 @@ export class CreateProject1670546051404 implements MigrationInterface {
                     type: "varchar"
                 },
                 {
+                    name: "phone_number",
+                    type: "varchar"
+                },
+                {
                     name: "user_id",
                     type: "uuid"
                 },

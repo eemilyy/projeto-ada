@@ -8,6 +8,7 @@ export const create = async (data: any) => {
 
     project.name = data.name;
     project.description = data.description;
+    project.phone_number = data.phone_number;
     project.user_id = data.user_id;
 
     return await repository.save(project);
@@ -29,9 +30,13 @@ export const destroy = async (name: string) => {
     }
 }
 
-export const addStudent = async (projetc_id:string, student_id:string) => {
-    return await repository.save(
-        {id: projetc_id,
-        students_id: student_id }
-    );
+// export const addStudent = async (projetc_id:string, student_id:string) => {
+//     return await repository.save(
+//         {id: projetc_id,
+//         students_id: student_id }
+//     );
+// }
+
+export const getAll = async() => {
+    return await database.query(`SELECT * FROM projects`)
 }
